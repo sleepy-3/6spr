@@ -16,11 +16,7 @@ func HandleFile(w http.ResponseWriter, r *http.Request) {
 
 func HandleUpload(w http.ResponseWriter, r *http.Request) {
 
-	err := r.ParseMultipartForm(32 << 20)
-	if err != nil {
-		http.Error(w, "Parse error", http.StatusBadRequest)
-		return
-	}
+	r.ParseMultipartForm(32 << 20)
 
 	file, header, err := r.FormFile("myFile")
 	if err != nil {
